@@ -22,13 +22,13 @@
             
             <li class="dropdown user user-menu">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <img src="views/dist/img/users/avatar.png" class="user-image" alt="User Image">
+                <img src="views/img/users/avatar.png" class="user-image" alt="User Image">
                 <span class="hidden-xs">luis sandon</span>
               </a>
               <ul class="dropdown-menu">
                 <!-- User image -->
                 <li class="user-header">
-                  <img src="views/dist/img/users/avatar.png" class="img-circle" alt="User Image">
+                  <img src="views/img/users/avatar.png" class="img-circle" alt="User Image">
 
                   <p>
                     Alexander Pierce - Web Developer
@@ -38,7 +38,7 @@
                 <!-- Menu Footer-->
                 <li class="user-footer">
                   <div class="pull-right">
-                    <a href="#" class="btn btn-default btn-flat">Salir</a>
+                    <a href="salir" class="btn btn-default btn-flat">Salir</a>
                   </div>
                 </li>
               </ul>

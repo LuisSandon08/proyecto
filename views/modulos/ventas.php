@@ -9,7 +9,7 @@
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i>INICIO</a></li>
-        <li class="active">Administrar usuarios</li>
+        <li class="active">Administrar Ventas</li>
       </ol>
     </section>
 

@@ -1,41 +1,14 @@
 <?php
 
+class Conexion{
 
+    static public function conectar(){
+        $link = new PDO("mysql:host=localhost;dbname=pura_vida_indigena", 
+                        "root", 
+                        "");
 
-class DB{
-    private $host;
-    private $db;
-    private $user;
-    private $password;
-    private $charset;
+        $link->exec("set names utf8");
 
-    public function __construct()
-    {
-        $this->host = '127.0.0.1';
-        $this->db = 'pos';
-        $this->user = 'root';
-        $this->password= '';
-        
+        return $link;
     }
-    
-    function connect(){
-        try{
-            $connection = "mysql:host=" . $this->host . ";dbname=" . $this->db;
-            $options = [
-                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-                PDO::ATTR_EMULATE_PREPARES =>false,
-            ];
-
-
-            $pdo = new PDO($connection, $this->user, $this->password, $options);
-
-            return $pdo;
-        }catch(PDOException $e){
-            print_r('Error en la conexion: ' . $e->getmessage());
-
-        }
-    }
-    
 }
-
-?>

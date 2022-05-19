@@ -1,3 +1,11 @@
+<?php 
+
+session_start();
+
+
+?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,6 +36,9 @@
   <!-- AdminLTE Skins -->
   <link rel="stylesheet" href="views/dist/css/skins/_all-skins.min.css">
 
+  <!-- DataTables -->
+  <link rel="stylesheet" href="views/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 
@@ -45,8 +56,12 @@
   <!-- AdminLTE App -->
   <script src="views/dist/js/adminlte.min.js"></script> 
 
-  <script>
-  </script> 
+  <script src="views/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+  <script src="views/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+
+  <!-- alerts -->
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 
 </head>
 
@@ -70,7 +85,8 @@
             $_GET["ruta"] == "clientes" ||
             $_GET["ruta"] == "ventas" ||
             $_GET["ruta"] == "crear-ventas" ||
-            $_GET["ruta"] == "reportes") 
+            $_GET["ruta"] == "reportes" ||
+            $_GET["ruta"] == "salir")
         {
           include "modulos/".$_GET["ruta"].".php";
         } else {
@@ -93,7 +109,6 @@
     
   </div>
   <!-- ./wrapper -->
-
   <script src="views/js/plantilla.js"></script>
   
 </body>

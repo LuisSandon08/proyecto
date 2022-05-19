@@ -24,7 +24,7 @@
 
         </div>
         <div class="box-body">
-          <table class="table table-bordered table-striped tablas">
+          <table class="table table-bordered table-striped table-responsive tablas">
 
           <thead>
             <tr>
@@ -153,7 +153,6 @@
                   <div class="input-group">
 
                     <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                    
                     <input type="text" class="form-control input-lg" name="nuevoNombre" placeholder="Ingresar Nombre" required>
 
                   </div>
@@ -230,13 +229,6 @@
             <button type="submit" class="btn btn-primary">Guardar Usuario</button>
 
           </div>
-
-          <?php
-
-          $crearUsuario = new ControllersUsuarios();
-          $crearUsuario -> ctrCrearUsuario();
-          
-          ?>
 
       </form>
 
