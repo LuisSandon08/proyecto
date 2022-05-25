@@ -73,13 +73,19 @@ class ControllersUsuarios{
                             confirmButtonText: "cerrar",
                             closeOnConfirm: false
 
-                        }).then ((result.value)=>{
+                        }).then ((result)=>{
 
-                            window.location = "usuarios";
+                            if(result.value){
+
+                                window.location = "usuarios";
+        
+                             }
+
+                           
 
                         })
                     
-                    </script>'
+                    </script>';
                 }
 
         }

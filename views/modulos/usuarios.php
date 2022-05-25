@@ -130,7 +130,7 @@
 
     <div class="modal-dialog">
 
-      <form role="form" method="_POST" enctype="multipart/form-data">
+      <form role="form" method="post"  enctype="multipart/form-data">
 
         <div class="modal-content">
 
