@@ -130,7 +130,7 @@
 
     <div class="modal-dialog">
 
-      <form role="form" method="post"  enctype="multipart/form-data">
+      <form role="form" method="POST"  enctype="multipart/form-data">
 
         <div class="modal-content">
 
@@ -211,11 +211,11 @@
                     SUBIR FOTO
                 </div>
 
-                <input type="file" id="nuevaFoto" name="nuevaFoto">
+                <input type="file" class="nuevaFoto" name="nuevaFoto">
 
-                <p class="help-block">peso maximo de la foto 200 MB</p>
+                <p class="help-block">peso maximo de la foto 2MB</p>
 
-                <img src="views/img/users/avatar.png" class="img-thumbnail" width="100px">
+                <img src="views/img/users/avatar.png" class="img-thumbnail previsualizar" width="100px">
 
               </div>
 

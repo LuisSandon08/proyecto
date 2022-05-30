@@ -110,6 +110,6 @@ session_start();
   </div>
   <!-- ./wrapper -->
   <script src="views/js/plantilla.js"></script>
-  
+  <script src="views/js/usuarios.js"></script>
 </body>
 </html>

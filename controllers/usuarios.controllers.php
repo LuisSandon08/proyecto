@@ -60,7 +60,38 @@ class ControllersUsuarios{
                 preg_match('/^[-a-zA-Z0-9]+$/', $_POST["nuevoUsuario"]) &&
                 preg_match('/^[-a-zA-Z0-9]+$/', $_POST["nuevoPassword"])){
 
+                    $tabla = "usuarios";
+                    $datos = array("nombre" => $_POST["nuevoNombre"],
+                                    "usuario" => $_POST["nuevoUsuario"], 
+                                    "password" => $_POST["nuevoPassword"],
+                                    "perfil" => $_POST["nuevoPerfil"]);
 
+                    $res = ModeloUsuarios::mdlIngresarUsuario($tabla, $datos);
+
+                    if($res == "ok"){
+                        echo '<script>
+                    
+                        swal.fire({
+                            type: "success",
+                            title: "¡Usuario creado!",
+                            showConfirmButton: true,
+                            confirmButtonText: "cerrar",
+                            closeOnConfirm: false
+
+                        }).then ((result)=>{
+
+                            if(result.value){
+
+                                window.location = "usuarios";
+        
+                             }
+
+                           
+
+                        })
+                    
+                    </script>';
+                    }
 
 
                 } else {
