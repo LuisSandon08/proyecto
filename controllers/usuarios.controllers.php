@@ -60,6 +60,41 @@ class ControllersUsuarios{
                 preg_match('/^[-a-zA-Z0-9]+$/', $_POST["nuevoUsuario"]) &&
                 preg_match('/^[-a-zA-Z0-9]+$/', $_POST["nuevoPassword"])){
 
+                    if(isset($_FILES["nuevaFoto"]["tmp_name"])){
+
+                        list($ancho, $alto) = getimagesize($_FILES["nuevaFoto"]["tmp_name"]);
+
+                        $nuevoAncho = 500;
+                        $nuevoAlto = 500;
+
+                        // DIRECTORIO DE LA FOTO DEL USUARIO
+
+                        $directorio = "views/img/users/".$_POST["nuevoUsuario"];
+
+                        mkdir($directorio, 0755);
+
+                        /********************************************/
+
+                        if($_FILES["nuevaFoto"]["type"] == "image/jpeg"){
+
+                            // nombre imagen
+
+                            $aleatorio = mt_rand(100,999);
+                            $ruta = "views/img/users/".$_POST["nuevoUsuario"]."/".$aleatorio.".jpg";
+
+                            $origen = imagecreatefromjpeg($_FILES["nuevaFoto"]["tmp_name"]);
+
+                            $destino = imagecretetruecolor($nuevoAncho, $nuevoAlto);
+
+                            imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
+
+                            imagejpeg ($destino, $ruta);
+
+                        }
+
+                    }
+
+
                     $tabla = "usuarios";
                     $datos = array("nombre" => $_POST["nuevoNombre"],
                                     "usuario" => $_POST["nuevoUsuario"], 
