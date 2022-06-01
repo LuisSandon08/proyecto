@@ -84,7 +84,7 @@ class ControllersUsuarios{
 
                             $origen = imagecreatefromjpeg($_FILES["nuevaFoto"]["tmp_name"]);
 
-                            $destino = imagecretetruecolor($nuevoAncho, $nuevoAlto);
+                            $destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
 
                             imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
 
