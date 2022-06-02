@@ -10,13 +10,14 @@ class ControllersUsuarios{
             if (preg_match('/^[-a-zA-Z0-9]+$/', $_POST["ingUsuario"]) &&
             preg_match('/^[-a-zA-Z0-9]+$/', $_POST["ingPassword"])){
 
+                $encrypt = crypt ($_POST["ingPassword"], '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
                 $tabla = "usuarios";
                 $item = "usuario";
                 $valor = $_POST["ingUsuario"];
     
                 $respuesta = ModeloUsuarios::MdlMostrarUsuarios( $tabla, $item, $valor);
 
-                if($respuesta["usuario"] == $_POST["ingUsuario"] && $respuesta["password"] == $_POST["ingPassword"]){
+                if($respuesta["usuario"] == $_POST["ingUsuario"] && $respuesta["password"] == $encrypt){
 
                     $_SESSION["iniciarsession"] = "ok";
 
@@ -60,6 +61,8 @@ class ControllersUsuarios{
                 preg_match('/^[-a-zA-Z0-9]+$/', $_POST["nuevoUsuario"]) &&
                 preg_match('/^[-a-zA-Z0-9]+$/', $_POST["nuevoPassword"])){
 
+                    $ruta = "";
+
                     if(isset($_FILES["nuevaFoto"]["tmp_name"])){
 
                         list($ancho, $alto) = getimagesize($_FILES["nuevaFoto"]["tmp_name"]);
@@ -92,14 +95,34 @@ class ControllersUsuarios{
 
                         }
 
+                        if($_FILES["nuevaFoto"]["type"] == "image/png"){
+
+                            // nombre imagen
+
+                            $aleatorio = mt_rand(100,999);
+                            $ruta = "views/img/users/".$_POST["nuevoUsuario"]."/".$aleatorio.".png";
+
+                            $origen = imagecreatefrompng  ($_FILES["nuevaFoto"]["tmp_name"]);
+
+                            $destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
+
+                            imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
+
+                            imagepng ($destino, $ruta);
+
+                        }
+
                     }
 
 
+                    $encrypt = crypt ($_POST["nuevoPassword"], '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
                     $tabla = "usuarios";
+                    
                     $datos = array("nombre" => $_POST["nuevoNombre"],
                                     "usuario" => $_POST["nuevoUsuario"], 
-                                    "password" => $_POST["nuevoPassword"],
-                                    "perfil" => $_POST["nuevoPerfil"]);
+                                    "password" => $encrypt,
+                                    "perfil" => $_POST["nuevoPerfil"],
+                                    "foto" => $ruta);
 
                     $res = ModeloUsuarios::mdlIngresarUsuario($tabla, $datos);
 
